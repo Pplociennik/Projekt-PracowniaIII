@@ -7,7 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 /**
- * Product service implement.
+ * Consoles service implement.
  */
 @Service
 public class ConsolesServiceImpl implements ConsolesService {
