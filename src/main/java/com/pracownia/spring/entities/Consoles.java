@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.time.ZonedDateTime;
 
 /**
  * Product entity.
@@ -25,13 +24,16 @@ public class Consoles {
     private String consoleName;
 
     @Column
+    private String model;
+
+    @Column
     private String version;
 
     @Column
     private String developer;
 
     @Column
-    private ZonedDateTime relaseDate;
+    private String relaseDate;
 
 //    @ManyToMany(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST,  CascadeType.REMOVE})
 //    @JoinTable(name = "consoles_selles")
@@ -43,10 +45,11 @@ public class Consoles {
     }
 
 
-    public Consoles(Integer id, String consolesId, String consoleName, String version, String developer, ZonedDateTime relaseDate) {
+    public Consoles(Integer id, String consolesId, String consoleName, String model, String version, String developer, String relaseDate) {
         this.id = id;
         this.consolesId = consolesId;
         this.consoleName = consoleName;
+        this.model = model;
         this.version = version;
         this.developer = developer;
         this.relaseDate = relaseDate;
@@ -92,14 +95,21 @@ public class Consoles {
         this.developer = developer;
     }
 
-    public ZonedDateTime getRelaseDate() {
+    public String getRelaseDate() {
         return relaseDate;
     }
 
-    public void setRelaseDate(ZonedDateTime relaseDate) {
+    public void setRelaseDate(String relaseDate) {
         this.relaseDate = relaseDate;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 }
 
 

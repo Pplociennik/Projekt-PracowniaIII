@@ -1,6 +1,7 @@
 package com.pracownia.spring.controllers;
 
 //import com.pracownia.spring.services.ConsolesService;
+import com.pracownia.spring.entities.Consoles;
 import com.pracownia.spring.services.ConsolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,7 +38,9 @@ public class IndexController {
         LocalDateTime localtDateAndTime = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime dateAndTime  = ZonedDateTime.of(localtDateAndTime, zoneId);
-        
+
+        Consoles c1 = new Consoles(1, "1", "XBOX", "360", "ELITE", "MICROSOFT", "2005");
+        consolesService.saveConsoles(c1);
 
         return "Model Generated";
     }
