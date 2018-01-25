@@ -16,9 +16,7 @@ import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.UUID;
 
-/**
- * Homepage controller.
- */
+//kontroler glowny
 @RestController
 @RequestMapping("/")
 public class IndexController {

@@ -15,9 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * Product controller.
- */
+//kontroler konsol
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,9 +25,7 @@ public class ConsolesController {
     private ConsolesService consolesService;
 
 
-    /**
-     * List all consoles.
-     */
+  //wypisanie wszystkich konsol
     @RequestMapping(value = "/consoles", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Consoles> list(Model model) {
         return consolesService.listAllConsoles();
@@ -41,25 +37,19 @@ public class ConsolesController {
     }
 
 
-    /**
-     * View a specific console by its id.
-     */
+ //wyswietl dana konsole
     @RequestMapping(value = "/console/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Consoles getByPublicId(@PathVariable("id") Integer publicId) {
         return consolesService.getConsolesById(publicId);
     }
 
-    /**
-     * View a specific console by its id.
-     */
+//wyswietl konsole wybrana po id
     @RequestMapping(value = "/console", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Consoles getByParamPublicId(@RequestParam("id") Integer publicId) {
         return consolesService.getConsolesById(publicId);
     }
 
-    /**
-     * Save console to database.
-     */
+ //wyslij konsole do bazy danych
     @RequestMapping(value = "/console", method = RequestMethod.POST)
     public ResponseEntity<Consoles> create(@RequestBody @Valid @NotNull Consoles consoles) {
         consoles.setConsolesId(UUID.randomUUID().toString());
@@ -68,9 +58,7 @@ public class ConsolesController {
     }
 
 
-    /**
-     * Edit console in database.
-     */
+ //edytuj konsole w bazie danych
     @RequestMapping(value = "/console", method = RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Consoles consoles) {
         if (!consolesService.checkIfExist(consoles.getId()))
@@ -81,9 +69,7 @@ public class ConsolesController {
         }
     }
 
-    /**
-     * Delete console by its id.
-     */
+//usun konsole wybrana po id
     @RequestMapping(value = "/console/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Consoles> delete(@PathVariable Integer id) {
         consolesService.deleteConsoles(id);
