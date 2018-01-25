@@ -20,6 +20,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ConsolesController {
 
     @Autowired
@@ -84,9 +85,9 @@ public class ConsolesController {
      * Delete console by its id.
      */
     @RequestMapping(value = "/console/{id}", method = RequestMethod.DELETE)
-    public RedirectView delete(@PathVariable Integer id) {
+    public ResponseEntity<Consoles> delete(@PathVariable Integer id) {
         consolesService.deleteConsoles(id);
-        return new RedirectView("/api/consoles", true);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

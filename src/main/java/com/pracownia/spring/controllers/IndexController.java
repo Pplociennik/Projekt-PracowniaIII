@@ -27,22 +27,24 @@ public class IndexController {
     private ConsolesService consolesService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    String index() {
-        return "index";
-    }
-
-
-    @RequestMapping(value = "generateModel", method = RequestMethod.POST, produces = MediaType.TEXT_PLAIN_VALUE)
     public String generateModel() {
 
         LocalDateTime localtDateAndTime = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime dateAndTime  = ZonedDateTime.of(localtDateAndTime, zoneId);
 
-        Consoles c1 = new Consoles(1, "1", "XBOX", "360", "ELITE", "MICROSOFT", "2005");
-        consolesService.saveConsoles(c1);
 
-        return "Model Generated";
+        Consoles c1 = new Consoles(1, "1", "XBOX", "360", "ELITE", "MICROSOFT", "2005");
+        Consoles c2 = new Consoles(2, "2", "PLAYSTATION", "4", "PRO", "SONY", "2017");
+        Consoles c3 = new Consoles(3, "3", "XBOX", "ONE", "X", "MICROSOFT", "2017");
+
+
+        consolesService.saveConsoles(c1);
+        consolesService.saveConsoles(c2);
+        consolesService.saveConsoles(c3);
+
+
+        return "Utworzono Konsole!";
     }
 
 }
